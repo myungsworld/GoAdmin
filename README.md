@@ -34,14 +34,23 @@ formList.SetTable("table").
     if values.IsUpdatePost() {
       ...
     }
-  
+  return nil
 }
 ```
 
 ### SetInsertFn
   - SetPostHook안에 Insert 기능이 있는데 이건 왜 존재하는지 모르겠음 
   - 테이블이 생성될때 트랜잭션이 일어나는건 동일한데 이건 테이블이 완성되기전에 값을 가져오는거라 키값을 가져올수도 없음
-  - 결론 쓰레기
+  - 결론 쓰레기 (사실 이거때문에 뻘짓 2시간 하다가 IsInsertPost로 해결함)
+
+**Usage**
+```go
+formList.SetInsertFn(func(values form2.Values) error {
+  
+  fmt.println("나는 해적왕이 될사람임")
+  
+  return nil
+})
 
 ### FieldOptions
   - go get github.com/GoAdminGroup/go-admin/template/types
