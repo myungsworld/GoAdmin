@@ -14,6 +14,28 @@ formList.SetTable("table").
     ex) values.Get("id")
 } 
 ```   
+**Advanced Usage**
+```go
+formList.SetTable("table").
+  SetPostHook(func(values form2.Values) error {
+    
+    
+    // Post가 일어나는 모든 작업에 대해서 트랜잭션을 일으킴
+    
+    
+    
+    // 테이블이 새로 생성될때만 트랜잭션 일어남
+    if values.IsInsertPost() {
+      ...
+    }
+  
+  
+    // 테이블이 변경 될때만 트랜잭션 일어남
+    if values.IsUpdatePost() {
+      ...
+    }
+  
+}
 
 ### FieldOptions
   - go get github.com/GoAdminGroup/go-admin/template/types
