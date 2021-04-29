@@ -14,7 +14,6 @@ formList.SetTable("table").
     ex) values.Get("id")
 } 
 ```   
----
 **Advanced Usage**
 ```go
 formList.SetTable("table").
