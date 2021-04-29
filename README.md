@@ -1,6 +1,6 @@
 # GoAdmin
 
-
+---
 ### SetPostHook 
   - go get github.com/GoAdminGroup/go-admin/plugins/admin/modules/form
   - formList.AddField() 로 만든 모든 필드데이터를 가지고 있고 테이블이 생성되고 난후 바로 핸들링 작업 가능 
@@ -14,6 +14,7 @@ formList.SetTable("table").
     ex) values.Get("id")
 } 
 ```   
+---
 **Advanced Usage**
 ```go
 formList.SetTable("table").
@@ -37,7 +38,7 @@ formList.SetTable("table").
   return nil
 }
 ```
-
+---
 ### SetInsertFn
   - SetPostHook안에 Insert 기능이 있는데 이건 왜 존재하는지 모르겠음 
   - 테이블이 생성될때 트랜잭션이 일어나는건 동일한데 이건 테이블이 완성되기전에 값을 가져오는거라 키값을 가져올수도 없음
@@ -52,6 +53,7 @@ formList.SetInsertFn(func(values form2.Values) error {
   return nil
 })
 ```
+---
 ### JumpInNewTab
   - 버튼으로 다른 웹의 테이블을 반환할때 쓴다.
   - 참조하는 테이블의 id와 foreignKey 를 연결시켜서 원하는 테이블의 리스트를 반환 할수 있다.
@@ -62,7 +64,7 @@ info.AddColumButtons("반환될 테이블",
   types.GetColumnButton("클릭" , icon.Check, action.JumpInNewTab("/{{config.Prefix}}/info/{{key}}?반환할 테이블의 컬럼명={{.Id}}", "")),
   )
 ```  
-
+---
 ### FieldOptions
   - go get github.com/GoAdminGroup/go-admin/template/types
   - Drop box 생성
@@ -94,3 +96,4 @@ formList.AddField("종류","type",db.Varchar,form.SelectSingle).
     return options
   }()).FieldRowWidth(2)  
 ```
+---
