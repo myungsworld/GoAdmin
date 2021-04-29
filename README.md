@@ -52,6 +52,17 @@ formList.SetInsertFn(func(values form2.Values) error {
   return nil
 })
 ```
+### JumpInNewTab
+  - 버튼으로 다른 웹의 테이블을 반환할때 쓴다.
+  - 참조하는 테이블의 id와 foreignKey 를 연결시켜서 원하는 테이블의 리스트를 반환 할수 있다.
+
+**Usage**
+```go
+info.AddColumButtons("반환될 테이블",
+  types.GetColumnButton("클릭" , icon.Check, action.JumpInNewTab("/{{config.Prefix}}/info/{{key}}?반환할 테이블의 컬럼명={{.Id}}", "")),
+  )
+```  
+
 ### FieldOptions
   - go get github.com/GoAdminGroup/go-admin/template/types
   - Drop box 생성
