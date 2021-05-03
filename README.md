@@ -96,3 +96,23 @@ formList.AddField("종류","type",db.Varchar,form.SelectSingle).
   }()).FieldRowWidth(2)  
 ```
 ---
+### SetDeleteFn 
+  - 삭제 기능에 추가적인 트랜잭션을 추가하고 싶을때 사용
+  - 필자의 경우는 삭제를 할때 테이블에 어떤 권한이 있을 시 삭제를 불가능하게 함
+
+**Usage**
+```go
+
+info.SetTable("table").
+  SetDeleteFn(func (idArr []string) error {
+  
+  // idArr = goAdmin에서 여러개를 선택할수 있기 떄문에 선택한 id들을 배열로 가져옴
+  
+  // Example 
+  for _ , id := range idArr {
+    // Your code
+  }  
+  
+  return nil 
+  
+  })
