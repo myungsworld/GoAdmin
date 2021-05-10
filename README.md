@@ -116,3 +116,19 @@ info.SetTable("table").
   return nil 
   
   })
+  ```
+  ---
+  ### SetUpdateFn 
+    - 위에 삭제 기능에 추가적인 트랜잭션을 추가한다고 했는데 
+    - 정확히 말하자면 기능을 새로 만드는것 ( 이걸 추가하면 그냥 그 버튼의 기능을 다 바꿔버림 )
+  
+  **Usage**
+  ```go
+  
+  formList.SetUpdateFn(func values form2.Values) error {
+    
+    fmt.println("이렇게만 하면 그냥 로그만 찍히고 아무일도 안일어남")
+    
+   return nil
+  })
+  ```
