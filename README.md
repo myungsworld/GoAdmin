@@ -121,6 +121,7 @@ info.SetTable("table").
   ### SetUpdateFn 
     - 위에 삭제 기능에 추가적인 트랜잭션을 추가한다고 했는데 
     - 정확히 말하자면 기능을 새로 만드는것 ( 이걸 추가하면 그냥 그 버튼의 기능을 다 바꿔버림 )
+    - delete 는 getInfo 에서 핸들링 update 는 getForm 에서 핸들링
   
   **Usage**
   ```go
@@ -132,3 +133,30 @@ info.SetTable("table").
    return nil
   })
   ```
+---
+### FieldPostFilterFn
+  - 필드 하나만의 속성에 대한 제어를 하려면 이걸 사용
+
+**Usage**
+```go
+
+formList.AddField("니모","name", db.Varchar, form.Text).
+  FieldPostFilterFn(func(value types.PostFieldModel) interface{} {
+    
+    // value.Value.First() 가 입력받아서 가져오는 값
+    newName := value.Value.First()
+    
+    // 만들어질 경우의 트랜잭션
+    if value.IsCreate() {
+      return newName
+    } else {
+    
+      // 그 이외의 (수정될 경우의) 트랜잭션
+      id , _ := strconv.Atoi(value.Row["id"]
+      ... your code
+    }
+    
+    return newName
+}) 
+
+``` 
