@@ -160,3 +160,22 @@ formList.AddField("니모","name", db.Varchar, form.Text).
 }) 
 
 ``` 
+
+### Double Join?
+  - join 여러개 하는 방법
+
+**Usage**
+```go
+
+info.AddField("니얼굴","your_face",db.Varchar).
+FieldJoin(types.Join{
+  Field: "info가 가지는 table column",
+  JoinField : "join할 table column",
+  Table : "table name",
+}).
+FieldJoin(types.Join{
+  Table : "table name",
+  JoinField :"위 table column",
+  Field : "base table column",
+  BaseTable : "table name",
+})  
