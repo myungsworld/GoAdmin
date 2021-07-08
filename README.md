@@ -179,3 +179,15 @@ FieldJoin(types.Join{
   Field : "base table column",
   BaseTable : "table name",
 })  
+```
+### AddSelectBox
+  - 검색을 필터 입력이 아닌 드롭박스로 하는 방법
+
+**Usage**
+```go
+
+info.AddSelectBox("성별", types.FieldOptions{
+        {Value: "", Text: ""},
+        {Value: "0", Text: "men"},
+        {Value: "1", Text: "women"},
+    }, action.FieldFilter("column name(gender)"))
